@@ -52,7 +52,6 @@ isIn(L,[[A,B],[B,A]]) :-
     sumlist(L,Sum),
     A * B =:= Sum - A - B, !.
 
-% number of occurences
 number_of_occurrences(H,[],0).
 number_of_occurrences(H, [H|T], Occurrences) :-
     number_of_occurrences(H,T,N), !,
@@ -61,7 +60,7 @@ number_of_occurrences(E, [H|T], Occurrences) :-
     number_of_occurrences(E,T,Occurrences).
 
 
-% Growth of a Population
+% Growth of a Population - fails
 nb_year(S,P,C,E,Y) :- 
     P2 is (P / 100),
     g(S,P2,C,E,0,Y), !.
@@ -77,7 +76,6 @@ g(Start,_,_,End,Akk,Akk) :-
     Start > End.
 
 
-% Directions Reduction
 op("NORTH","SOUTH").
 op("SOUTH","NORTH").
 op("EAST","WEST").
