@@ -1,26 +1,3 @@
-op("NORTH","SOUTH").
-op("SOUTH","NORTH").
-op("EAST","WEST").
-op("WEST","EAST").
-
-rm1(_, [], []).
-rm1(Term, [Term|Tail], Tail).
-rm1(Term, [Head|Tail], [Head|Result]) :-
-  rm1(Term, Tail, Result).
-
-%dir_reduc(["NORTH","WEST","SOUTH","EAST"],["NORTH","WEST","SOUTH","EAST"]).
-dir_reduc([H|T],R) :-
-    op(H,Op),
-    memberchk(Op,T),
-    rm1(H,[H|T],R1),
-    rm1(Op,R1,R2),
-    dir_reduc(R2,R), !.
-dir_reduc([H|T],R) :-
-    op(H,Op),
-    not(memberchk(Op,T)),
-    dir_reduc(R2,R), !.
-dir_reduc(L,L).
-
 find_it(L,Num) :- occ(L,Num).
 
 occ([H|T],H) :-
@@ -86,7 +63,6 @@ g([H|T],[Y|X2]) :-
 
 
 
-% alphabetical addition
 a(a,1).
 a(b,2).
 a(c,3).
@@ -123,7 +99,6 @@ add([H|T],[O|R1]) :-
     a(H,O).
 
 
-% multiples of 3,5
 solution(X,R) :-
   findall(Num,between(1,X,Num),L), include([X]>>(0 is X mod 3; 0 is X mod 5),L,R2),
   sumlist(R2,R).
