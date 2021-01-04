@@ -1,0 +1,5 @@
+backend_protocol: 'http'
+backend_url: 'bpa-platform-dev-ci:9080'
+backend_path: '/bpa/rest'
+namespace: 'secret'
+env_name: dev-ci

@@ -18,3 +18,16 @@ find([H|T],Akk,R) :-
 find([H|T],Akk,R) :-
     member(H,Akk),
     find(T,Akk,R).
+
+
+
+t(Str,R) :-
+    string_chars(Str,Chrs),
+    t2(Chrs,Res),
+    string_chars(R,Res).
+
+t2([],[]).
+t2(['A'|T],['T'|R2]) :-  t2(T,R2).
+t2(['T'|T],['A'|R2]) :-  t2(T,R2).
+t2(['C'|T],['G'|R2]) :-  t2(T,R2).
+t2(['G'|T],['C'|R2]) :-  t2(T,R2).
